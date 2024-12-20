@@ -37,12 +37,20 @@ const registerController = async (req, res) => {
 //login callback
 const loginController = async (req, res) => {
   try {
+    //check if existing user
     const user = await userModel.findOne({ email: req.body.email });
     if (!user) {
       return res.status(404).send({
         success: false,
         message: "User not found",
       });
+    }
+    //check role
+    if(user.role !== req.body.role){
+      return res.status(500).send({
+        success:false,
+        message:'role does not match'
+      })
     }
     //login after comparing password
     const comparePassword = await bcrypt.compare(
