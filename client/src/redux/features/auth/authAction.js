@@ -14,7 +14,11 @@ export const userLogin = createAsyncThunk(
       //store token
       if (data.success) {
         localStorage.setItem("token", data.token);
-        toast.success(data.message);
+        toast.success(`${data.message} | Redirectiong to Home Page`);
+        //redirect after some seconds
+        setTimeout(() => {
+          window.location.replace("/");
+        }, 4000);
       }
       //    else {
       //     toast.success("Invalid Username or Password");
@@ -89,3 +93,24 @@ export const userRegister = createAsyncThunk(
     }
   }
 );
+
+//get current user
+export const getCurrentUser = createAsyncThunk(
+  'auth/getCurrentUser',
+  async({rejectWithValue}) => {
+    // console.log("Getting Current User")
+    try {
+      const res = await API.get('/auth/current-user')
+      if(res && res.data){
+        return res && res.data
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
