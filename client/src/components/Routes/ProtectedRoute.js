@@ -6,13 +6,13 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const dispatch = useDispatch();
-  console.log("Accessing Protected Route");
+  // console.log("Accessing Protected Route");
   //get current user
   const getUser = async () => {
     try {
-      console.log("API call");
+      // console.log("API call");
       const { data } = await API.get("/auth/current-user");
-      console.log("data=", data);
+      // console.log("data=", data);
       if (data && data.success) {
         dispatch(getCurrentUser({ data }));
       }
