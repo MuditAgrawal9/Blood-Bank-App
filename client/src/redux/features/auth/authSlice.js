@@ -15,7 +15,12 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    //to solve the problem of toast notification 
+    resetError: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     //login user
     builder.addCase(userLogin.pending, (state) => {
@@ -65,4 +70,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { resetError } = authSlice.actions;
 export default authSlice;

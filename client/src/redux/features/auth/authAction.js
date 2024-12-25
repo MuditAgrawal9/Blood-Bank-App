@@ -15,14 +15,11 @@ export const userLogin = createAsyncThunk(
       if (data.success) {
         localStorage.setItem("token", data.token);
         toast.success(`${data.message} | Redirectiong to Home Page`);
-        //redirect after some seconds
+        // redirect after some seconds
         setTimeout(() => {
           window.location.replace("/");
-        }, 4000);
+        }, 3000);
       }
-      //    else {
-      //     toast.success("Invalid Username or Password");
-      //   }
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
