@@ -9,15 +9,15 @@ const createInventoryController = async (req, res) => {
     const user = await userModel.findOne({ email });
     // console.log("user=",user)
     if (!user) {
-      throw new Error("User Not Found".bgRed); //shows message in terminal
+      throw new Error("User Not Found".bgRed);
       //   return res.status(404).send({
       //     success: false,
       //     message: "User Not Found",
       //   });
     }
-    if (inventoryType === "in" && user.role !== "donar") {
-      throw new Error("Not a donar account".bgRed);
-    }
+    // if (inventoryType === "in" && user.role !== "donar") {
+    //   throw new Error("Not a donar account".bgRed);
+    // }
     if (inventoryType === "out" && user.role !== "hospital") {
       throw new Error("Not a hospital".bgRed);
     }
@@ -41,9 +41,10 @@ const createInventoryController = async (req, res) => {
 //get all blood recors
 const getInventoryController = async (req, res) => {
   try {
+    console.log("req.body=", req.body);
     const inventory = await inventoryModel
       .find({
-        organization: req.body.organization,
+        organization: req.body.userId,
       })
       .populate("donar")
       .populate("hospital")

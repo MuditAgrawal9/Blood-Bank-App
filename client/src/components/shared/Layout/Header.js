@@ -30,7 +30,7 @@ const Header = () => {
                 <span className="mx-1">
                   {user?.name || user?.hospital || user?.organization}
                 </span>
-                <span class="badge text-bg-secondary">{user?.role}</span>
+                <span className="badge text-bg-secondary">{user?.role}</span>
               </p>
             </li>
             <li className="nav-item mx-3">
