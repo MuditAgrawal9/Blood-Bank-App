@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
       } else {
         req.body.userId = decode.userId;
         // console.log(req , decode.userId)
-        console.log(`Auth middleware success`.bgGreen.white)
+        // console.log(`Auth middleware success`.bgGreen.white)
         next();
       }
     });

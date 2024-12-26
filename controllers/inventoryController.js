@@ -10,11 +10,11 @@ const createInventoryController = async (req, res) => {
     const user = await userModel.findOne({ email });
     // console.log("user=",user)
     if (!user) {
-      throw new Error("User Not Found".bgRed);
-      //   return res.status(404).send({
-      //     success: false,
-      //     message: "User Not Found",
-      //   });
+      // throw new Error("User Not Found".bgRed);
+      return res.status(404).send({
+        success: false,
+        message: "User Not Found",
+      });
     }
     // if (inventoryType === "in" && user.role !== "donar") {
     //   throw new Error("Not a donar account".bgRed);
@@ -22,7 +22,9 @@ const createInventoryController = async (req, res) => {
     // if (inventoryType === "out" && user.role !== "hospital") {
     //   throw new Error("Not a hospital".bgRed);
     // }
-    if (req.body.inventoryType === "out") {
+
+    //iinventory out logic
+    if (inventoryType === "out") {
       const requestedBloodGroup = req.body.bloodGroup;
       const requestedQuantityOfBlood = req.body.quantity;
 
@@ -44,9 +46,9 @@ const createInventoryController = async (req, res) => {
           },
         },
       ]);
-      const totalIn = totalBloodIn[0]?.total || 0
+      const totalIn = totalBloodIn[0]?.total || 0;
       console.log("Total In=", totalBloodIn);
-      //calculate blood quantity - out 
+      //calculate blood quantity - out
       const totalBloodOut = await inventoryModel.aggregate([
         {
           $match: {
@@ -63,19 +65,20 @@ const createInventoryController = async (req, res) => {
         },
       ]);
       console.log("Total Out=", totalBloodOut);
-      const totalOut = totalBloodOut[0]?.total || 0
+      const totalOut = totalBloodOut[0]?.total || 0;
 
       //calculation
-      const availableQuantity = totalIn - totalOut
-      if(availableQuantity < requestedQuantityOfBlood){
+      const availableQuantity = totalIn - totalOut;
+      if (availableQuantity < requestedQuantityOfBlood) {
         return res.status(500).send({
-          success:false,
-          message: `Only ${availableQuantity}mL of ${requestedBloodGroup} is available`
-        })
+          success: false,
+          message: `Only ${availableQuantity}mL of ${requestedBloodGroup} is available`,
+        });
       }
-      req.body.hospital = user?._id
+      req.body.hospital = user?._id;
+    } else {
+      req.body.donar = user?._id;
     }
-
     // save inventory
     const inventory = new inventoryModel(req.body);
     await inventory.save();
@@ -119,4 +122,35 @@ const getInventoryController = async (req, res) => {
   }
 };
 
-module.exports = { createInventoryController, getInventoryController };
+//get donar records
+const getDonarsController = async (req, res) => {
+  try {
+    // console.log("Inside getDonarsController".bgYellow);
+    const organization = req.body.userId;
+    //find donars
+    const donarId = await inventoryModel.distinct("donar", {
+      organization: organization,
+    });
+    // console.log(`donarId=, ${donarId}`.bgYellow);
+    const donars = await userModel.find({_id: { $in: donarId } });
+    // console.log(`donars=, ${donars}`.bgYellow);
+    return res.status(200).send({
+      success: true,
+      message: "Got donar records successfully",
+      donars,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in Get Donar Record API",
+      error,
+    });
+  }
+};
+
+module.exports = {
+  createInventoryController,
+  getInventoryController,
+  getDonarsController,
+};
