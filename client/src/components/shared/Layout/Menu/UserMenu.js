@@ -8,7 +8,7 @@ export const userMenu = [
   {
     id:2,
     name: "Donar",
-    path: "/donar ",
+    path: "/donar",
     icons: "fa-solid fa-hand-holding-medical",
   },
   {
