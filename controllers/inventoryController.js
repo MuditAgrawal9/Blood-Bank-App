@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const inventoryModel = require("../models/inventoryModel");
 const userModel = require("../models/userModel");
 
@@ -18,10 +19,64 @@ const createInventoryController = async (req, res) => {
     // if (inventoryType === "in" && user.role !== "donar") {
     //   throw new Error("Not a donar account".bgRed);
     // }
-    if (inventoryType === "out" && user.role !== "hospital") {
-      throw new Error("Not a hospital".bgRed);
+    // if (inventoryType === "out" && user.role !== "hospital") {
+    //   throw new Error("Not a hospital".bgRed);
+    // }
+    if (req.body.inventoryType === "out") {
+      const requestedBloodGroup = req.body.bloodGroup;
+      const requestedQuantityOfBlood = req.body.quantity;
+
+      const organization = new mongoose.Types.ObjectId(req.body.userId);
+      //For specified blood group
+      //calculate blood quantity - in
+      const totalBloodIn = await inventoryModel.aggregate([
+        {
+          $match: {
+            organization,
+            inventoryType: "in",
+            bloodGroup: requestedBloodGroup,
+          },
+        },
+        {
+          $group: {
+            _id: "$bloodGroup",
+            total: { $sum: "$quantity" },
+          },
+        },
+      ]);
+      const totalIn = totalBloodIn[0]?.total || 0
+      console.log("Total In=", totalBloodIn);
+      //calculate blood quantity - out 
+      const totalBloodOut = await inventoryModel.aggregate([
+        {
+          $match: {
+            organization,
+            inventoryType: "out",
+            bloodGroup: requestedBloodGroup,
+          },
+        },
+        {
+          $group: {
+            _id: "$bloodGroup",
+            total: { $sum: "$quantity" },
+          },
+        },
+      ]);
+      console.log("Total Out=", totalBloodOut);
+      const totalOut = totalBloodOut[0]?.total || 0
+
+      //calculation
+      const availableQuantity = totalIn - totalOut
+      if(availableQuantity < requestedQuantityOfBlood){
+        return res.status(500).send({
+          success:false,
+          message: `Only ${availableQuantity}mL of ${requestedBloodGroup} is available`
+        })
+      }
+      req.body.hospital = user?._id
     }
-    //save inventory
+
+    // save inventory
     const inventory = new inventoryModel(req.body);
     await inventory.save();
     return res.status(201).send({

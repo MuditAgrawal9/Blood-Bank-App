@@ -27,12 +27,14 @@ const Modal = () => {
       });
       if (data?.success) {
         toast.success(data.message);
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 2000);
       }
     } catch (error) {
       console.log(error);
+      alert(error.response.data.message);
+      window.location.reload();
     }
   };
 
