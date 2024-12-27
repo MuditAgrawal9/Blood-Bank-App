@@ -9,7 +9,7 @@ const Donar = () => {
   const getDonars = async () => {
     try {
       const { data } = await API.get("/inventory/get-donars");
-      console.log("Donars data=", data);
+      console.log("Donars data=", {data});
       if (data?.success) {
         setDonarsRecord(data?.donars);
       }
@@ -23,7 +23,7 @@ const Donar = () => {
   }, []);
   return (
     <Layout>
-      <div>
+      <div className="container">
         <h1>Donar Page</h1>
         <table className="table container">
           <thead>
