@@ -20,7 +20,7 @@ const inventorySchema = new mongoose.Schema(
       type: String,
       required: [true, "Donar Email is required"],
     },
-    //id of person who doanated the blood
+    //id of person/org who facilitates doanation of blood
     organization: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
