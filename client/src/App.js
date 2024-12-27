@@ -7,7 +7,9 @@ import ProtectedRoute from "./components/Routes/ProtectedRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
 import Donar from "./pages/Dashboard/Donar";
 import Hospital from "./pages/Dashboard/Hospital";
-import Organization from "./components/shared/Layout/Organization";
+import Organization from "./pages/Dashboard/Organization";
+import Consumer from "./pages/Dashboard/Consumer";
+import Donation from "./pages/Dashboard/Donation";
 
 function App() {
   return (
@@ -59,6 +61,22 @@ function App() {
           element={
             <ProtectedRoute>
               <Organization />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/consumer"
+          element={
+            <ProtectedRoute>
+              <Consumer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donation"
+          element={
+            <ProtectedRoute>
+              <Donation />
             </ProtectedRoute>
           }
         />
