@@ -257,6 +257,30 @@ const getOrgsForHospitalController = async (req, res) => {
   }
 };
 
+//get last 3 blood records
+const getRecentInventoryController = async (req, res) => {
+  try {
+    const inventory = await inventoryModel
+      .find({
+        organization: req.body.userId,
+      })
+      .limit(3)
+      .sort({ createdAt: -1 });
+    return res.status(200).send({
+      success: true,
+      message: "Recent Inventory Fetched Successfully",
+      inventory,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error in Recent Inventory API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createInventoryController,
   getInventoryController,
@@ -264,5 +288,6 @@ module.exports = {
   getHospitalController,
   getOrganizationController,
   getOrgsForHospitalController,
-  getInventoryHospitalController
+  getInventoryHospitalController,
+  getRecentInventoryController
 };
