@@ -8,6 +8,7 @@ const {
   getOrganizationController,
   getOrgsForHospitalController,
   getInventoryHospitalController,
+  getRecentInventoryController,
 } = require("../controllers/inventoryController");
 
 const router = express.Router();
@@ -18,6 +19,13 @@ router.post("/create-inventory", authMiddleware, createInventoryController);
 
 //get all blood recors || GET
 router.get("/get-inventory", authMiddleware, getInventoryController);
+
+//get recent blood record
+router.get(
+  "/get-recent-inventory",
+  authMiddleware,
+  getRecentInventoryController
+);
 
 //get hospital blood record
 router.post(

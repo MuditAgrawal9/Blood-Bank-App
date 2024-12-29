@@ -24,6 +24,9 @@ app.use('/api/v1/test', require("./routes/testRoutes"))
 app.use('/api/v1/auth',require("./routes/authRoutes"))
 //inventory route
 app.use('/api/v1/inventory',require("./routes/inventoryRoute"))
+//analytics route
+app.use('/api/v1/analytics',require("./routes/analyticsRoute"))
+
 
 //port
 const PORT = process.env.PORT || 8080;
