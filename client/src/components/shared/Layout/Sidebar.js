@@ -69,6 +69,34 @@ const Sidebar = () => {
               <Link to="/donation">Donations</Link>
             </div>
           )}
+          {user?.role === "admin" && (
+            <>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/donar-list" && "active"
+                }`}
+              >
+                <i className="fa-solid fa-hand-holding-medical"></i>
+                <Link to="/donar-list">Donar List</Link>
+              </div>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/hospital-list" && "active"
+                }`}
+              >
+                <i className="fa-solid fa-hospital"></i>
+                <Link to="/hospital-list">Hospital list</Link>
+              </div>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/org-list" && "active"
+                }`}
+              >
+                <i className="fa-sharp fa-solid fa-building-ngo"></i>
+                <Link to="/org-list">Organization List</Link>
+              </div>
+            </>
+          )}
           {/* {userMenu.map((menu) => {
             const isActive = location.pathname === menu.path;
             return (
