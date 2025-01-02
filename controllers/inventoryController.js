@@ -99,7 +99,7 @@ const createInventoryController = async (req, res) => {
 //get all blood recors
 const getInventoryController = async (req, res) => {
   try {
-    console.log("req.body=", req.body);
+    // console.log("req.body=", req.body);
     const inventory = await inventoryModel
       .find({
         organization: req.body.userId,
