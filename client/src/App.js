@@ -15,6 +15,9 @@ import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
 import OrganizzationList from "./pages/Admin/OrganizzationList";
 import AdminHome from "./pages/Admin/AdminHome";
+import LandingPage from "./pages/LandingPage";
+import AvailableHospitals from "./pages/User/AvailableHospitals";
+import AvailableOrgs from "./pages/User/AvailableOrgs";
 
 function App() {
   return (
@@ -34,6 +37,30 @@ function App() {
           element={
             <PublicRoute>
               <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/landingpage"
+          element={
+            <PublicRoute>
+              <LandingPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/availablehospitals"
+          element={
+            <PublicRoute>
+              <AvailableHospitals />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/availableorgs"
+          element={
+            <PublicRoute>
+              <AvailableOrgs />
             </PublicRoute>
           }
         />

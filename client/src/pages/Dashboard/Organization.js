@@ -3,7 +3,7 @@ import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import './../../styles/Organization.css'
+import "./../../styles/Organization.css";
 
 const Organization = () => {
   //get user
@@ -45,14 +45,17 @@ const Organization = () => {
       <Layout>
         <div className="container">
           <h1>Organization</h1>
-          <h5>All the organizations where you have donated your blood are listed here</h5>
+          <h5>
+            All the organizations where you have donated your blood are listed
+            here
+          </h5>
           <table className="table container">
             <thead>
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Date & Time</th>
+                <th scope="col">Address</th>
               </tr>
             </thead>
             <tbody>
@@ -61,9 +64,7 @@ const Organization = () => {
                   <td>{record.name || record.organizationName + "(ORG)"}</td>
                   <td>{record.email}</td>
                   <td>{record.phone}</td>
-                  <td>
-                    {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
-                  </td>
+                  <td>{record.address}</td>
                 </tr>
               ))}
             </tbody>

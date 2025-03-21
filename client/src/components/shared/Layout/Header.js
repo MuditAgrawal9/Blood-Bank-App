@@ -2,14 +2,14 @@ import React from "react";
 import { BiDonateBlood } from "react-icons/bi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../../../styles/Header.css";
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleLogout = () => {
     localStorage.clear();
