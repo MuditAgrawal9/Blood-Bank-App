@@ -3,6 +3,7 @@ import Layout from "../../components/shared/Layout/Layout";
 import { useSelector } from "react-redux";
 import API from "../../services/API";
 import moment from "moment";
+import './../../styles/Organization.css'
 
 const Donation = () => {
   const [donations, setDonations] = useState([]);
@@ -42,7 +43,6 @@ const Donation = () => {
                 <th scope="col">Blood Group</th>
                 <th scope="col">Inventory Type</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Email</th>
                 <th scope="col">Date & Time</th>
               </tr>
             </thead>
@@ -52,7 +52,6 @@ const Donation = () => {
                   <td>{record.bloodGroup}</td>
                   <td>{record.inventoryType}</td>
                   <td>{record.quantity}(mL)</td>
-                  <td>{record.email}</td>
                   <td>
                     {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
                   </td>
