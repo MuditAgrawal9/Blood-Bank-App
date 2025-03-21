@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
 import moment from "moment";
+import './../../styles/Organization.css'
+
 
 const Hospital = () => {
   const [hospitalRecod, setHospitalRecord] = useState([]);
@@ -24,6 +26,7 @@ const Hospital = () => {
       <Layout>
         <div className="container">
           <h1>Hospital</h1>
+          <h5>The hospitals that have requested blood are listed here</h5>
           <table className="table container">
             <thead>
               <tr>

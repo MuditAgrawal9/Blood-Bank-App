@@ -3,6 +3,8 @@ import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
 import moment from "moment";
 import { useSelector } from "react-redux";
+import './../../styles/Organization.css'
+
 
 const Consumer = () => {
   const [consumersRecord, setConsumersRecord] = useState([]);

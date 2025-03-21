@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
 import moment from "moment";
+import './../../styles/Organization.css'
 
 const Donar = () => {
   const [donarsRecord, setDonarsRecord] = useState([]);
@@ -24,7 +25,8 @@ const Donar = () => {
   return (
     <Layout>
       <div className="container">
-        <h1>Donar Page</h1>
+        <h1>Donars</h1>
+        <h5>The blood donars are listed here</h5>
         <table className="table container">
           <thead>
             <tr>

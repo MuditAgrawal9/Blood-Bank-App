@@ -8,6 +8,7 @@ import Modal from "../components/shared/modal/Modal";
 import API from "../services/API";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import "../styles/Organization.css";
 
 const HomePage = () => {
   const { loading, error, user } = useSelector((state) => state.auth);
@@ -48,19 +49,22 @@ const HomePage = () => {
           <Spinner />
         ) : (
           <>
-            {user?.role === 'admin' && navigate("/admin")}
-            {user?.role === 'donar' && navigate("/organization")}
-            {user?.role === 'hospital' && navigate("/admin")}
+            {user?.role === "admin" && navigate("/admin")}
+            {user?.role === "donar" && navigate("/organization")}
+            {user?.role === "hospital" && navigate("/admin")}
             <div className="container">
-              <h4
-                className="ms-4"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                style={{ cursor: "pointer" }}
-              >
-                <i className="fa-solid fa-plus text-success py-4"></i>
-                Add Inventory
-              </h4>
+              <div className="d-flex justify-content-between align-items-center">
+                <h1>Blood Transactions</h1>
+                <h4
+                  className="ms-4"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  style={{ cursor: "pointer" }}
+                >
+                  <i className="fa-solid fa-plus text-success py-4"></i>
+                  Add Inventory
+                </h4>
+              </div>
               <Modal />
               <table className="table container">
                 <thead>
