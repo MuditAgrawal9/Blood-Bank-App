@@ -35,6 +35,7 @@ const Donation = () => {
       <Layout>
         <div className="container">
           <h1>Donations</h1>
+          <h5>All your donations at one place</h5>
           <table className="table container">
             <thead>
               <tr>
