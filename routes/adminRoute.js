@@ -22,16 +22,16 @@ router.get(
 //get hospital list
 router.get(
   "/hospital-list",
-  authMiddleware,
-  adminMiddleware,
+  // authMiddleware,
+  // adminMiddleware,
   getHospitalListController
 );
 
 //get organization list
 router.get(
   "/org-list",
-  authMiddleware,
-  adminMiddleware,
+  // authMiddleware,
+  // adminMiddleware,
   getOrganizationListController
 );
 
