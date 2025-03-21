@@ -51,17 +51,19 @@ const ReusableForm = ({ formType, formTitle, submitBtn }) => {
             />
             <label>Donar</label>
           </div>
-          <div className="ms-2">
-            <input
-              type="radio"
-              className=""
-              name="role"
-              id="adminRadio"
-              value={"admin"}
-              onChange={(e) => setRole(e.target.value)}
-            />
-            <label>Admin</label>
-          </div>
+          {formType === "Login" && (
+            <div className="ms-2">
+              <input
+                type="radio"
+                className=""
+                name="role"
+                id="adminRadio"
+                value={"admin"}
+                onChange={(e) => setRole(e.target.value)}
+              />
+              <label>Admin</label>
+            </div>
+          )}
           <div className="ms-2">
             <input
               type="radio"
@@ -73,7 +75,7 @@ const ReusableForm = ({ formType, formTitle, submitBtn }) => {
             />
             <label>Organization</label>
           </div>
-           <div className="ms-2">
+          <div className="ms-2">
             <input
               type="radio"
               className=""
@@ -85,7 +87,7 @@ const ReusableForm = ({ formType, formTitle, submitBtn }) => {
             <label>Hospital</label>
           </div>
         </div>
-        <hr/>
+        <hr />
         {/* conditional redendering of fields */}
 
         {formType === "Login" && (
