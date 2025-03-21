@@ -44,6 +44,7 @@ const Organization = () => {
       <Layout>
         <div className="container">
           <h1>Organization</h1>
+          <h5>All the organizations where you have donated your blood are listed here</h5>
           <table className="table container">
             <thead>
               <tr>

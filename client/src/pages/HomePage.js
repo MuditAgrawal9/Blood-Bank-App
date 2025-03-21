@@ -49,6 +49,8 @@ const HomePage = () => {
         ) : (
           <>
             {user?.role === 'admin' && navigate("/admin")}
+            {user?.role === 'donar' && navigate("/organization")}
+            {user?.role === 'hospital' && navigate("/admin")}
             <div className="container">
               <h4
                 className="ms-4"
