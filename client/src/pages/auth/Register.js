@@ -30,7 +30,7 @@ const Register = () => {
           </div>
           <div className="col-md-4 form-container">
             <ReusableForm
-              formTitle={"Register Page"}
+              formTitle={"Register"}
               submitBtn={"Register"}
               formType={"Register"}
             />
