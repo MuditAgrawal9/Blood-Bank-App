@@ -51,7 +51,7 @@ const HomePage = () => {
           <>
             {user?.role === "admin" && navigate("/admin")}
             {user?.role === "donar" && navigate("/organization")}
-            {user?.role === "hospital" && navigate("/admin")}
+            {user?.role === "hospital" && navigate("/organization")}
             <div className="container">
               <div className="d-flex justify-content-between align-items-center">
                 <h1>Blood Transactions</h1>

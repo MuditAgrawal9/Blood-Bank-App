@@ -2,7 +2,7 @@ import React from "react";
 import { BiDonateBlood } from "react-icons/bi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../../../styles/Header.css";
 
@@ -25,16 +25,9 @@ const Header = () => {
       </div>
 
       <nav className="nav-links">
-        {/* {user?.role === "organization" &&
-          (["/", "/donar", "/hospital"].includes(location.pathname) ? (
-            <Link to="/analytics" className="nav-item">
-              Analytics
-            </Link>
-          ) : (
-            <Link to="/" className="nav-item">
-              Home
-            </Link>
-          ))} */}
+        <Link to="/" className="nav-item">
+          Home
+        </Link>
         <div className="user-info">
           <FaRegUserCircle className="user-icon" />
           <span className="user-name">
@@ -42,7 +35,6 @@ const Header = () => {
           </span>
           <span className="role-badge">{user?.role}</span>
         </div>
-
         <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>

@@ -25,7 +25,7 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route
-          path="/"
+          path="/homepage"
           element={
             <ProtectedRoute>
               <HomePage />
@@ -40,30 +40,9 @@ function App() {
             </PublicRoute>
           }
         />
-        <Route
-          path="/landingpage"
-          element={
-            <PublicRoute>
-              <LandingPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/availablehospitals"
-          element={
-            <PublicRoute>
-              <AvailableHospitals />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/availableorgs"
-          element={
-            <PublicRoute>
-              <AvailableOrgs />
-            </PublicRoute>
-          }
-        />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/availablehospitals" element={<AvailableHospitals />} />
+        <Route path="/availableorgs" element={<AvailableOrgs />} />
         <Route
           path="/register"
           element={
