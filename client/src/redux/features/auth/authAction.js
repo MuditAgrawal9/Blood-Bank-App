@@ -13,10 +13,10 @@ export const userLogin = createAsyncThunk(
       //store token
       if (data.success) {
         localStorage.setItem("token", data.token);
-        toast.success(`${data.message} | Redirectiong to Home Page`);
+        toast.success(`${data.message} | Redirectiong to Dashboard`);
         // redirect after some seconds
         setTimeout(() => {
-          window.location.replace("/");
+          window.location.replace("/homepage");
         }, 3000);
       }
       return data;

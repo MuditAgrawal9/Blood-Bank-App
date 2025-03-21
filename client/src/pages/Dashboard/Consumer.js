@@ -3,8 +3,7 @@ import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
 import moment from "moment";
 import { useSelector } from "react-redux";
-import './../../styles/Organization.css'
-
+import "./../../styles/Organization.css";
 
 const Consumer = () => {
   const [consumersRecord, setConsumersRecord] = useState([]);
@@ -40,20 +39,20 @@ const Consumer = () => {
           <table className="table container">
             <thead>
               <tr>
+                <th scope="col">Email</th>
                 <th scope="col">Blood Group</th>
                 <th scope="col">Inventory Type</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Email</th>
                 <th scope="col">Date & Time</th>
               </tr>
             </thead>
             <tbody>
               {consumersRecord?.map((record) => (
                 <tr key={record._id}>
+                  <td>{record.email}</td>
                   <td>{record.bloodGroup}</td>
                   <td>{record.inventoryType}</td>
                   <td>{record.quantity}(mL)</td>
-                  <td>{record.email}</td>
                   <td>
                     {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
                   </td>

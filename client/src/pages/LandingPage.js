@@ -11,7 +11,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="hero">
         <h1>Welcome to BloodBank</h1>
-        <p>Connecting donors, organizations, hospitals, and patients efficiently.</p>
+        <p>Connecting Donors, Organizations and Hospitals efficiently.</p>
         <button className="primary-btn" onClick={() => navigate("/login")}>
           Get Started
         </button>

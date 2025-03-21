@@ -37,6 +37,7 @@ const ReusableForm = ({ formType, formTitle, submitBtn }) => {
       >
         <h1 className="text-center">{formTitle}</h1>
         <hr />
+        <h5>Make sure you select the correct role</h5>
         <div className="d-flex pb-2">
           <div className="">
             <input
@@ -84,6 +85,7 @@ const ReusableForm = ({ formType, formTitle, submitBtn }) => {
             <label>Hospital</label>
           </div>
         </div>
+        <hr/>
         {/* conditional redendering of fields */}
 
         {formType === "Login" && (
