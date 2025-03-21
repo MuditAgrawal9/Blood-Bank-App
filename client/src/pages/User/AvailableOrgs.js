@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../../services/API';
+import "../../styles/AvailableHospitals.css";
 
 const AvailableOrgs = () => {
     const [donarsRecord, setDonarsRecord] = useState([]);
@@ -21,9 +22,9 @@ const AvailableOrgs = () => {
   }, []);
 
   return (
-      <div className="container">
+      <div className="available-hospitals-container">
         <h1>Organizations</h1>
-        <table className="table container">
+        <table className="available-hospitals-table">
         <thead>
           <tr>
             <th scope="col">Name</th>
