@@ -1,0 +1,89 @@
+/* HEADER STYLING */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1F2937 !important;
+  padding: 12px 24px;
+  color: white;
+  height: 70px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* LOGO */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  background-color: #1F2937 !important;
+  font-size: 20px;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: #DC3545;
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  color: #E5E7EB;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+  color: #DC3545;
+}
+
+/* USER INFO */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #374151;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.user-icon {
+  font-size: 20px;
+  color: #E5E7EB;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.role-badge {
+  background: #2d59ea;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+  background: #DC3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+  background: #B02A37;
+}

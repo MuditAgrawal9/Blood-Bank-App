@@ -4,59 +4,44 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../../../styles/Header.css";
+
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const location = useLocation();
-  //logout button function
+
   const handleLogout = () => {
     localStorage.clear();
-    toast.success("Logout Successfull");
+    toast.success("Logout Successful");
     navigate("/login");
   };
+
   return (
-    <>
-      <nav className="navbar">
-        <div className="container-fluid">
-          <div className="navbar-brand mb-0">
-            <BiDonateBlood color="red" />
-            Blood Bank App
-          </div>
-          <ul className="navbar-nav  flex-row">
-            <li className="nav-item mx-3">
-              <p className="nav-link">
-                <FaRegUserCircle />
-                Welcome
-                <span className="mx-1">
-                  {user?.name || user?.hospital || user?.organization}
-                </span>
-                <span className="badge text-bg-secondary">{user?.role}</span>
-              </p>
-            </li>
-            {location.pathname === "/" ||
-            location.pathname === "/donar" ||
-            location.pathname === "/hospital" ? (
-              <li className="nav-item mx-3">
-                <Link to="/analytics" className="nav-link">
-                  Analytics
-                </Link>
-              </li>
-            ) : (
-              <li className="nav-item mx-3">
-                <Link to="/" className="nav-link">
-                  Home
-                </Link>
-              </li>
-            )}
-            <li className="nav-item mx-3">
-              <button className="btn btn-danger" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
-          </ul>
+    <header className="navbar">
+      <div className="navbar-brand">
+        <BiDonateBlood className="logo-icon" />
+        <span>Blood Bank</span>
+      </div>
+
+      <nav className="nav-links">
+        <div className="user-info">
+          <FaRegUserCircle className="user-icon" />
+          <span className="user-name">
+            {user?.name || user?.hospital || user?.organization}
+          </span>
+          <span className="role-badge">{user?.role}</span>
         </div>
+
+        {["/", "/donar", "/hospital"].includes(location.pathname) ? (
+          <Link to="/analytics" className="nav-item">Analytics</Link>
+        ) : (
+          <Link to="/" className="nav-item">Home</Link>
+        )}
+
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </nav>
-    </>
+    </header>
   );
 };
 
